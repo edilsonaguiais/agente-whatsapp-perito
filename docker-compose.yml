@@ -1,0 +1,34 @@
+# Sobe o OpenWA (WhatsApp do perito, motor Baileys) e o agente. Use pelo comando `agente-perito`.
+# Nenhuma porta fica aberta para a internet: o OpenWA avisa o agente pela rede interna do Docker.
+# O painel do OpenWA fica só em 127.0.0.1:2785 (acesse por túnel SSH; veja o README).
+services:
+  openwa:
+    image: ${OPENWA_IMAGEM:-ghcr.io/rmyndharis/openwa:latest}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "2785"
+      TZ: America/Sao_Paulo
+      ENGINE_TYPE: baileys
+      DATABASE_TYPE: sqlite
+      API_MASTER_KEY: ${WHATSAPP_API_KEY:-}  # gerada pelo configurar; vale a partir do 1º boot
+      AUTO_START_SESSIONS: "true"
+      # o OpenWA só manda aviso para hosts desta lista: aqui, só o agente
+      SSRF_ALLOWED_HOSTS: agente
+    volumes:
+      - openwa_dados:/app/data
+    ports:
+      - "127.0.0.1:2785:2785"
+
+  agente:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./.env:/app/.env
+      - ./conhecimento:/app/conhecimento
+      - ./dados:/app/dados
+    ports:
+      - "127.0.0.1:8000:8000"
+
+volumes:
+  openwa_dados:
