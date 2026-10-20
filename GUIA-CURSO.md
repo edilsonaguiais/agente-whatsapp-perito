@@ -107,3 +107,8 @@ Duração sugerida entre parênteses.
 - [ ] 6 conversas de teste aprovadas
 - [ ] Lista de teste vazia (agente aberto)
 - [ ] Aviso de privacidade publicado e rotina semanal na agenda
+
+## Nota: VPS ou computador próprio
+O agente roda também no computador do aluno (Docker Desktop), sem VPS: precisa ficar ligado 24 h,
+sem suspensão, e o que chegar com ele desligado não é respondido. Bom para testar; para vender,
+VPS. Ver README, "Sem VPS: rodar no seu próprio computador".

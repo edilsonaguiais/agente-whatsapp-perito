@@ -61,11 +61,28 @@ Funciona bem para **atender quem te procura**. Usado errado, o número é banido
 ### 2. Contrate uma VPS
 Ubuntu 24.04, 2 GB de RAM, 1 vCPU (qualquer provedor). Anote o IP e a senha de root.
 
+> **Acesso:** o repositório é privado e exclusivo para alunos da Mentoria Águias da Perícia e do
+> Águias ONE. O GitHub pede seu usuário e um token de acesso no `git clone`; o seu usuário precisa
+> ter sido liberado pela equipe do curso.
+
+### Sem VPS: rodar no seu próprio computador
+Dá, e funciona igual: o WhatsApp do agente se conecta para fora, então não precisa de endereço
+público nem de porta aberta. O preço é este: **o computador fica ligado 24 horas, sem dormir.**
+- Windows: instale o Docker Desktop (com WSL 2) e o Ubuntu pela Microsoft Store; abra o Ubuntu e
+  rode os mesmos dois comandos do passo 3 (sem `ssh`). Mac: Docker Desktop e o Terminal.
+- Desligue a suspensão e a hibernação (Windows: Configurações > Sistema > Energia; Mac: Ajustes >
+  Bateria > impedir repouso) e deixe no carregador.
+- Mensagens que chegarem com o computador desligado **não são respondidas** quando ele volta: o
+  agente ignora o que tem mais de 5 minutos, para não responder conversa velha fora de contexto.
+  Atualização do Windows que reinicia de madrugada e queda de energia derrubam o atendimento.
+- Recomendação do curso: comece no computador para testar e aprender; quando o agente estiver
+  vendendo, passe para uma VPS (a partir de uns R$ 30/mês), que não dorme nem atualiza sozinha.
+
 ### 3. Instale
 Entre no servidor (`ssh root@SEU_IP`) e rode:
 
 ```bash
-git clone <ENDERECO-DO-REPOSITORIO-DO-CURSO> agente-whatsapp-perito
+git clone https://github.com/edilsonaguiais/agente-whatsapp-perito.git agente-whatsapp-perito
 sudo bash agente-whatsapp-perito/instalar.sh
 ```
 
