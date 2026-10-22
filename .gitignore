@@ -1,7 +1,6 @@
-/.env
-/dados/
+.env
 /conhecimento/
+/dados/
 __pycache__/
-.pytest_cache/
 *.pyc
-/*_APAGAR/
+/2026.*_APAGAR/
